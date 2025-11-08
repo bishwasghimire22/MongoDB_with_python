@@ -9,5 +9,6 @@ books = db.books.find()
 for book in books:
     # Documents are generally turned into dictionaries in which there's a key for each field
     # The following code prints the value of the "title" field
-    print(book["title"])
+    print(book["_id"])
+
     # Try printing all the fields of a document
