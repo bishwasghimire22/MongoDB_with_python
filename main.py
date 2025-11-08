@@ -12,7 +12,7 @@ def menu():
     print("7. Delete Author")
     print("8. Delete Book")
     print("9. Exit")
-    return input("Choose an option: ")
+    return input("\nChoose an option: ")
 
 
 def main():
