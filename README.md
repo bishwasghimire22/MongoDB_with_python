@@ -39,3 +39,27 @@ python -m venv venv
    ````
    pip install -r requirements.txt
    ````
+
+## Default connection is to a local MongoDB instance on port 27017 only
+````
+mongodb://localhost:27017/
+````
+## Usage
+Run the application: 
+````
+python main.py
+
+````
+--- Library Database ---
+1. Add Author
+2. Add Book
+3. List Authors
+4. List Books
+5. Update Author
+6. Update Book
+7. Delete Author
+8. Delete Book
+9. Exit
+Choose an option:
+
+
