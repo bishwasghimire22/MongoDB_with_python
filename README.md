@@ -51,6 +51,14 @@ python -m venv venv
    pip install -r requirements.txt
    ```
 
+## Quick Start - Seed Sample Data
+
+After cloning the repository, you can populate the database with sample authors and books:
+
+```
+python seed_data.py
+```
+
 ## Default connection is to a local MongoDB instance on port 27017 only
 
 ```
