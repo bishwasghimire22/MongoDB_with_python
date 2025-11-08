@@ -18,6 +18,24 @@ This project demonstrates using **MongoDB** with **Python** via the **PyMongo** 
 ## Installation
 
 1. **Clone the repository**
-```bash
-git clone 
+````
+git clone https://github.com/bishwasghimire22/MongoDB_with_python.git
 cd mongodb_app
+````
+2. **Create a virtual environment**
+````
+python -m venv venv
+````
+3. **Activate the virtual environment**
+   * Windows (PowerShell):
+   ````
+   .\venv\Scripts\Activate.ps1
+   ````
+   * macOS / Linux:
+   ````
+   source venv/bin/activate
+   ````
+4. **Install dependencies**
+   ````
+   pip install -r requirements.txt
+   ````
