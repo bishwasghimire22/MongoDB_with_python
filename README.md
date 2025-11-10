@@ -1,34 +1,34 @@
-# MongoDB Library Application with Python
+# MongoDB Movie Database Application with Python
 
 ## Overview
 
-This project demonstrates using **MongoDB** with **Python** via the **PyMongo** library.  
-It implements a command-line interface (CLI) application for managing a library, allowing users to manage **authors** and **books** with full CRUD operations and **document relationships**.
+This project demonstrates how to use **MongoDB** with **Python** via the **PyMongo** library.  
+It implements a **command-line interface (CLI)** application for managing a **movie database**, allowing users to manage **directors** and **movies** with full CRUD operations and **document relationships**.
 
-Books stores **author references (`author_id`)** instead of author names, ensuring referential integrity.
+Movies store **director references (`director_id`)** instead of director names, ensuring proper **referential integrity**.
 
 ---
 
 ## Features
 
 - **CRUD Operations** for two collections:
-  - **Authors**: add, list, update, delete
-  - **Books**: add, list, update, delete
-- **Relationships**: Each book references an author via `_id`.
-- **Automatic updates**: Updating an author’s name reflects in all their books.
-- **Cascade delete**: Deleting an author removes all books linked to them.
-- **Command-Line Interface**: Simple text-based interaction.
-- **Extensible**: Supports adding search, filtering, and statistics.
+  - **Directors** — Add, list, update, delete
+  - **Movies** — Add, list, update, delete
+- **Relationships:** Each movie references a director via `_id`.
+- **Cascade Delete:** Deleting a director removes all their movies automatically.
+- **Director Details View:** View a director’s profile along with all their movies.
+- **Command-Line Interface:** Simple, interactive terminal menu.
+- **Extensible:** Easily extendable for search, filtering, or analytics features.
 
 ---
 
 ## Installation
 
-1. **Clone the repository**
+1. Clone the repository
 
 ```
 git clone https://github.com/bishwasghimire22/MongoDB_with_python.git
-cd mongodb_app
+cd MongoDB_with_python
 ```
 
 2. **Create a virtual environment**
@@ -53,7 +53,7 @@ python -m venv venv
 
 ## Quick Start - Seed Sample Data
 
-After cloning the repository, you can populate the database with sample authors and books:
+After cloning the repository, you can populate the database with sample directors and movies:
 
 ```
 python seed_data.py
@@ -76,15 +76,15 @@ python main.py
 
 ```
 
---- Library CLI ---
+--- Movie Database CLI ---
 
-1. Add Author
-2. Add Book
-3. List Authors
-4. List Books
-5. Update Author
-6. Update Book
-7. Delete Author
-8. Delete Book
-9. Exit
-   Choose an option:
+1. Add Director
+2. Add Movie
+3. List Directors
+4. List Movies
+5. Update Director
+6. Update Movie
+7. Delete Director
+8. Delete Movie
+9. View Director Details
+10. Exit

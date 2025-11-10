@@ -5,77 +5,99 @@ import os
 MONGO_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
 client = MongoClient(MONGO_URI)
 
-db = client["library"]
+# Use the new database name
+db = client["movies_db"]
 
 # Clear existing data (optional, for testing)
-###  db.authors.delete_many({})
-#### db.books.delete_many({})
+# db.directors.delete_many({}) ##Uncomment to clear the directors collection
+# db.movies.delete_many({})  ##Uncomment to clear the movies collection
 
-# Sample authors
-authors = [
-    {"name": "Delia Owens"},
-    {"name": "Leo Tolstoy"},
-    {"name": "John Ronald Reuel Tolkien"},
-    {"name": "Aldous Huxley"},
-    {"name": "Colleen Hoover"},
-]
-
-author_docs = {}
-for author in authors:
-    result = db.authors.insert_one(author)
-    author_docs[author["name"]] = result.inserted_id
-
-# Sample books
-books = [
+# ----- Sample Directors -----
+directors = [
     {
-        "title": "Secrets of the Southern Wild",
-        "author_id": author_docs["Delia Owens"],
-        "year": 2024,
-        "categories": ["Fiction", "Mystery", "Drama", "Contemporary"],
-        "copies": 11,
-        "ebook": True,
+        "name": "Christopher Nolan",
+        "birth_year": 1970,
+        "nationality": "British-American",
+        "awards": ["Oscar", "BAFTA"],
     },
     {
-        "title": "War and Peace",
-        "author_id": author_docs["Leo Tolstoy"],
-        "year": 1869,
-        "categories": ["Classic", "Historical", "Novel"],
-        "copies": 84,
-        "ebook": True,
+        "name": "Hayao Miyazaki",
+        "birth_year": 1941,
+        "nationality": "Japanese",
+        "awards": ["Academy Honorary Award"],
     },
     {
-        "title": "The Fellowship of the Ring",
-        "author_id": author_docs["John Ronald Reuel Tolkien"],
-        "year": 1954,
-        "categories": ["Fantasy", "Adventure", "Epic"],
-        "copies": 2,
-        "ebook": False,
+        "name": "Greta Gerwig",
+        "birth_year": 1983,
+        "nationality": "American",
+        "awards": ["Golden Globe", "BAFTA"],
     },
     {
-        "title": "Brave New World",
-        "author_id": author_docs["Aldous Huxley"],
-        "year": 1932,
-        "categories": ["Dystopia", "Science Fiction", "Classic"],
-        "copies": 22,
-        "ebook": True,
+        "name": "Denis Villeneuve",
+        "birth_year": 1967,
+        "nationality": "Canadian",
+        "awards": ["César Award", "BAFTA"],
     },
     {
-        "title": "The Hobbit",
-        "author_id": author_docs["John Ronald Reuel Tolkien"],
-        "year": 1937,
-        "categories": ["Fantasy", "Adventure", "Epic"],
-        "copies": 2,
-        "ebook": True,
-    },
-    {
-        "title": "It Ends with Us",
-        "author_id": author_docs["Colleen Hoover"],
-        "year": 2016,
-        "categories": ["Romance", "Drama", "Contemporary", "Fiction", "Emotional"],
-        "copies": 24,
-        "ebook": True,
+        "name": "Steven Spielberg",
+        "birth_year": 1946,
+        "nationality": "American",
+        "awards": ["Oscar", "Golden Globe", "BAFTA"],
     },
 ]
 
-db.books.insert_many(books)
-print("Sample authors and books inserted successfully!")
+# Insert directors and store their IDs
+director_docs = {}
+for director in directors:
+    result = db.directors.insert_one(director)
+    director_docs[director["name"]] = result.inserted_id
+
+# ----- Sample Movies -----
+movies = [
+    {
+        "title": "Inception",
+        "release_year": 2010,
+        "director_id": director_docs["Christopher Nolan"],
+        "genres": ["Sci-Fi", "Thriller"],
+        "rating": 8.8,
+    },
+    {
+        "title": "Interstellar",
+        "release_year": 2014,
+        "director_id": director_docs["Christopher Nolan"],
+        "genres": ["Sci-Fi", "Adventure", "Drama"],
+        "rating": 8.6,
+    },
+    {
+        "title": "Spirited Away",
+        "release_year": 2001,
+        "director_id": director_docs["Hayao Miyazaki"],
+        "genres": ["Animation", "Fantasy"],
+        "rating": 8.6,
+    },
+    {
+        "title": "Barbie",
+        "release_year": 2023,
+        "director_id": director_docs["Greta Gerwig"],
+        "genres": ["Comedy", "Fantasy", "Adventure"],
+        "rating": 7.0,
+    },
+    {
+        "title": "Dune: Part One",
+        "release_year": 2021,
+        "director_id": director_docs["Denis Villeneuve"],
+        "genres": ["Sci-Fi", "Adventure"],
+        "rating": 8.1,
+    },
+    {
+        "title": "E.T. the Extra-Terrestrial",
+        "release_year": 1982,
+        "director_id": director_docs["Steven Spielberg"],
+        "genres": ["Family", "Sci-Fi", "Adventure"],
+        "rating": 7.8,
+    },
+]
+
+# Insert movies
+db.movies.insert_many(movies)
+print("Sample directors and movies inserted successfully!")
