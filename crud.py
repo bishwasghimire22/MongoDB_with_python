@@ -176,7 +176,7 @@ def view_director_details():
         print(f"Director '{name}' not found.")
         return
 
-    print(f"\n🎬 {director['name']}")
+    print(f"\n {director['name']}")
     print(f"Born: {director['birth_year']} | Nationality: {director['nationality']}")
     if director.get("awards"):
         print(f"Awards: {', '.join(director['awards'])}")
